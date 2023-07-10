@@ -1,0 +1,28 @@
+{% extends 'crm/main.html' %}
+{% block content %}
+
+    <table class="table">
+
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Имя операции</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products_add %}
+        <tr>
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.name}}</td>
+<!--            <td><input type="checkbox" name="selected_item" value="{{product.id}}"></td>-->
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Product</button>
+  </form>
+{% endblock content %}
